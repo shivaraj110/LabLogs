@@ -10,7 +10,6 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div>
-      <div className="font-sans p-4">home</div>
       <Link to={"/signup"}> signup </Link>
       <Link to={"/subjects"}>Subjects</Link>
     </div>
