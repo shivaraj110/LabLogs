@@ -84,12 +84,11 @@
 }
 
 button {
-  color: rgba(102, 99, 99, 0.862);
   text-decoration: none;
-  font-size: 20px;
+  /* font-size: 25px; */
   border: none;
   background: none;
-  font-weight: 600;
+  /* font-weight: 800; */
   font-family: "Poppins", sans-serif;
 }
 
@@ -102,7 +101,7 @@ button::before {
   content: "";
   width: 0%;
   height: 2px;
-  background: #4daa67aa;
+  background: #0e948dc2;
   display: block;
   transition: 0.5s;
 }
@@ -110,4 +109,30 @@ button::before {
 button:hover::after,
 button:hover::before {
   width: 100%;
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-weight: 400; /* or 700 for bold */
+  font-display: swap;
+  src: url("poppins-regular.ttf") format("truetype");
+}
+
+body {
+  font-family: "Poppins", sans-serif; /* fallback font */
+}
+
+.signupBtn {
+  background-color: #00c2b8c2;
+  color: white;
+  align-items: center;
+  width: 100px;
+  margin-left: 20px;
+}
+.startBtn {
+  background-color: #00c2b8c2;
+  color: white;
+  align-items: center;
+  width: 125px;
+  margin-left: 7rem;
 }
