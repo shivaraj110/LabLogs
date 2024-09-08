@@ -6,7 +6,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { FontFamily } from "@fontsource/poppins";
 import "./tailwind.css";
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,16 +16,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        <header className="pb-20 pt-8 pl-36 ">
+      <body className="bg-teal-100">
+        <header className="pb-6 pt-6 lg:pl-36 fixed w-full shadow-md z-20 bg-teal-100">
           <nav>
             <Link to={"/"}>
-              <button className="font-extrabold pt-1 tracking-wider text-gray-700 text-3xl">
+              <button className="font-extrabold pt-1 tracking-wider text-gray-600 text-3xl">
                 Lablogs
               </button>
             </Link>
             <Link to={"/"}>
-              <button className="pl-12 font-semibold  text-gray-500 text-md">
+              <button className="pl-12 font-semibold text-gray-500 text-md">
                 About
               </button>
             </Link>
@@ -41,7 +40,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </button>
             </Link>
             <Link to={"/"}>
-              <button className="pl-80 font-semibold pr-5  text-gray-500 text-md">
+              <button className="lg:pl-80 pl-12 font-semibold pr-5  text-gray-500 text-md">
                 Login
               </button>
             </Link>

@@ -5,7 +5,7 @@
   width: 300px;
   height: 400px;
   margin: 0 auto;
-  background-color: #476c8b43;
+  background-color: #ccfbf1;
   border-radius: 8px;
   z-index: 1;
   box-shadow: 0px 10px 10px rgb(73, 70, 92);
@@ -15,7 +15,7 @@
 .card:hover {
   transform: translateY(-7px);
   box-shadow: 0px 10px 10px black;
-  background: linear-gradient(#fff2, transparent);
+  background-color: #99f6e4;
   transition: 0.5s;
 }
 
@@ -57,7 +57,7 @@
 }
 
 #title2 {
-  color: white;
+  color: #0e948dc2;
   padding-left: 50px;
   font-size: 15px;
 }
@@ -72,7 +72,7 @@
   background-color: rgb(73, 70, 92);
   border-radius: 5px;
   border: none;
-  color: white;
+  color: #34d399;
   padding: 10px;
 }
 #code:focus {
@@ -123,14 +123,14 @@ body {
 }
 
 .signupBtn {
-  background-color: #00c2b8c2;
+  background-color: #17c9c0bb;
   color: white;
   align-items: center;
   width: 100px;
   margin-left: 20px;
 }
 .startBtn {
-  background-color: #00c2b8c2;
+  background-color: #17c9c0bb;
   color: white;
   align-items: center;
   width: 125px;
