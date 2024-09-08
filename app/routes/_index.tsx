@@ -13,7 +13,7 @@ export default function Index() {
       {/* <div className="font-sans p-4">home</div> */}
       {/* <Link to={"/signup"}> signup </Link> */}
       {/* <Link to={"/subjects"}>Subjects</Link> */}
-      <div className="grid grid-cols-2 pt-56">
+      <div className="grid grid-cols-2 pt-48">
         <div className="col-span-2 sm:col-span-1">
           <div className="text-5xl font-extrabold text-gray-600 lg:pl-28 pl-1 md:pr-0">
             Manage your programming lab assignments
