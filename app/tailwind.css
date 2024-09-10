@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 .card {
-  width: 300px;
-  height: 400px;
+  width: 600px;
+  height: 500px;
   margin: 0 auto;
   background-color: #ccfbf1;
   border-radius: 8px;
@@ -54,26 +54,29 @@
   margin: 5px;
   margin-top: 5px;
   border-radius: 5px;
+  text-align: center;
 }
 
 #title2 {
   color: #0e948dc2;
   padding-left: 50px;
   font-size: 15px;
+  text-align: center;
 }
 
 .code-container {
   text-align: center;
 }
 #code {
-  width: 270px;
-  height: 350px;
+  width: 550px;
+  height: 450px;
   resize: none;
   background-color: rgb(73, 70, 92);
   border-radius: 5px;
   border: none;
   color: #34d399;
   padding: 10px;
+  padding-left: 20px;
 }
 #code:focus {
   outline: none !important;

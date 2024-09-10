@@ -2,18 +2,23 @@ import { Assignment, User } from "@prisma/client";
 import { prisma } from "./routes/subjects.$userId";
 import { truncate } from "fs";
 import test from "node:test";
-type assignmentPayload = Assignment
+type assignmentPayload = {
+    title : string,
+    description : string,
+    codeSnippet : string,
+    subjectId : number
+}
 export const addAssignment = async (payload : assignmentPayload) => {
     const res = prisma.assignment.create({
         data : {
-             title : payload.title,
-             codeSnippet : payload.codeSnippet,
-             description : payload.description,
-            postedBy : payload.postedBy,
+            title : payload.title,
+            codeSnippet : payload.codeSnippet,
+            description : payload.description,
             subjectId : payload.subjectId
         },
         select : {
-            title : true
+            title : true,
+            subjectId :true
         }
     })
     return res

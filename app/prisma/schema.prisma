@@ -27,7 +27,6 @@ model Assignment {
   title        String
   description  String?
   codeSnippet  String
-  postedBy     String
   subjectId    Int
   subject      Subject @relation(fields: [subjectId], references: [subjectId])
 }

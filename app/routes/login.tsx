@@ -61,9 +61,9 @@ export default function Login() {
               </button>
               <p className=" mt-1 text-sm text-gray-500">
                 already have an account?{" "}
-                <Link to={"/login"} className="underline">
+                <Link to={"/signup"} className="underline">
                   {" "}
-                  login{" "}
+                  signup
                 </Link>
               </p>
             </div>

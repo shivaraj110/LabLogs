@@ -30,7 +30,7 @@ export default function Subjects() {
   return (
     <div className="grid sm:grid-cols-3 grid-cols-1 pt-48 gap-6">
       <div className="col-span-3 text-gray-600 font-semibold grid grid-cols-2 gap-0 mt-2 text-2xl">
-        <div className="mt-2">your subjects </div>
+        <div className="mt-2 col-span-1">your subjects </div>
 
         <div className="col-span-1">
           <Link
