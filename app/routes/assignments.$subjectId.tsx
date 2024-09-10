@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { prisma } from "./subjects";
+import { prisma } from "./subjects.$userId";
 import { useLoaderData } from "@remix-run/react";
 import Card from "~/components/Card";
 type codeInput = {

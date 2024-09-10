@@ -14,10 +14,12 @@ datasource db {
 }
 
 model Subject {
-  subjectId      Int          @id @default(autoincrement())
-  subjectName    String       @unique
+  subjectId      Int           @id @default(autoincrement())
+  subjectName    String        @unique
   subDescription String
   assignments    Assignment[]
+  users          User[]        @relation(name: "SubjectUser")
+  SubjectUser    SubjectUser[]
 }
 
 model Assignment {
@@ -30,18 +32,20 @@ model Assignment {
   subject      Subject @relation(fields: [subjectId], references: [subjectId])
 }
 
-model admin {
-  adminId  Int     @id @default(autoincrement())
-  fname    String?
-  lname    String?
-  email    String  @unique
-  password String
+model User {
+  userId      Int           @id @default(autoincrement())
+  fname       String?
+  lname       String?
+  email       String        @unique
+  password    String
+  subjects    Subject[]     @relation(name: "SubjectUser")
+  SubjectUser SubjectUser[]
 }
 
-model user {
-  userId   Int     @id @default(autoincrement())
-  fname    String?
-  lname    String?
-  email    String  @unique
-  password String
+model SubjectUser {
+  subjectId Int @unique
+  userId    Int @unique
+
+  subject Subject @relation(fields: [subjectId], references: [subjectId])
+  user    User    @relation(fields: [userId], references: [userId])
 }

@@ -83,7 +83,7 @@
   transition: 0.5s;
 }
 
-button {
+.navbtn {
   text-decoration: none;
   /* font-size: 25px; */
   border: none;
@@ -92,12 +92,12 @@ button {
   font-family: "Poppins", sans-serif;
 }
 
-button::before {
+.navbtn::before {
   margin-left: auto;
 }
 
-button::after,
-button::before {
+.navbtn::after,
+.navbtn::before {
   content: "";
   width: 0%;
   height: 2px;
@@ -106,8 +106,8 @@ button::before {
   transition: 0.5s;
 }
 
-button:hover::after,
-button:hover::before {
+.navbtn:hover::after,
+.navbtn:hover::before {
   width: 100%;
 }
 
@@ -135,4 +135,174 @@ body {
   align-items: center;
   width: 125px;
   margin-left: 7rem;
+}
+
+.btn {
+  --color: #17c9c0bb;
+  font-family: inherit;
+  display: inline-block;
+  width: 8em;
+  height: 2.6em;
+  line-height: 2.5em;
+  margin: 20px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1.5px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 17px;
+  text-align: center;
+  align-items: center;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+  font-weight: 600;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+.btn:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.btn:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.btn:active:before {
+  background: #17c9c0bb;
+  transition: background 0s;
+}
+
+.supbutton {
+  all: unset;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 2.5px;
+  border: mediumspringgreen solid 0.15em;
+  border-radius: 0.25em;
+  color: mediumspringgreen;
+  font-size: 1.5em;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border 300ms, color 300ms;
+  user-select: none;
+}
+
+.supbutton p {
+  z-index: 1;
+}
+
+.supbutton:hover {
+  color: #212121;
+}
+
+.supbutton:active {
+  border-color: teal;
+}
+
+.supbutton::after,
+.supbutton::before {
+  content: "";
+  position: absolute;
+  width: 9em;
+  aspect-ratio: 1;
+  background: mediumspringgreen;
+  opacity: 50%;
+  border-radius: 50%;
+  transition: transform 500ms, background 300ms;
+}
+
+.supbutton::before {
+  left: 0;
+  transform: translateX(-8em);
+}
+
+.supbutton::after {
+  right: 0;
+  transform: translateX(8em);
+}
+
+.supbutton:hover:before {
+  transform: translateX(-1em);
+}
+
+.supbutton:hover:after {
+  transform: translateX(1em);
+}
+
+.supbutton:active:before,
+.supbutton:active:after {
+  background: teal;
+}
+
+.dots-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.dot {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: #b3d4fc;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.dot:last-child {
+  margin-right: 0;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.3s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.1s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    background-color: #b3d4fc;
+    box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+  }
+
+  50% {
+    transform: scale(1.2);
+    background-color: #6793fb;
+    box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+  }
+
+  100% {
+    transform: scale(0.8);
+    background-color: #b3d4fc;
+    box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+  }
 }
