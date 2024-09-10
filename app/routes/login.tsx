@@ -1,5 +1,20 @@
-import { Form, Link } from "@remix-run/react";
+import { ActionFunction, ActionFunctionArgs, redirect } from "@remix-run/node";
+import { Form, Link, useNavigation } from "@remix-run/react";
+import { prisma } from "./subjects.$userId";
+import { getUser } from "~/db";
+export const action: ActionFunction = async ({
+  request,
+}: ActionFunctionArgs) => {
+  const formData = await request.formData();
+  const email = JSON.stringify(formData.get("email"));
+  const password = JSON.stringify(formData.get("password"));
+  const res = await getUser({ email, password });
+  return redirect(`/subjects/${res?.userId}`);
+};
+
 export default function Login() {
+  const nav = useNavigation();
+  const isSubmitting = !(nav.state === "idle");
   return (
     <div>
       <div className="grid grid-cols-2 pt-48">
@@ -23,28 +38,28 @@ export default function Login() {
               <div className="text-center text-gray-500 text-2xl font-bold">
                 Login
               </div>
-              <p className="mt-2 text-gray-500 font-semibold ">email</p>
               <input
+                name="email"
                 type="text"
                 className=" rounded-md p-1 border mt-3 text-center bg-teal-100"
-                placeholder="example@gmail.com"
+                placeholder="email"
               />
-              <p className="mt-2 text-gray-500 font-semibold ">password</p>
               <input
+                name="password"
                 type="text"
                 className=" rounded-md p-1 border mt-3 text-center bg-teal-100"
-                placeholder="69696969"
+                placeholder="password"
               />
               <button
                 type="submit"
-                className="cursor-pointer transition-all mt-6 rounded-md bg-teal-500 text-white px-6 py-2 rounded-lg\nborder-blue-600\nborder-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]\nactive:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                Login
+                className="cursor-pointer transition-all font-semibold text-gray-200 mt-6 rounded-md bg-teal-500 px-6 py-2 rounded-lg\nborder-blue-600\nborder-b-[4px] hover:brightness-110 hover:border-b-[6px]\nactive:border-b-[2px] active:brightness-90">
+                {isSubmitting ? "Logging in" : "Log in"}
               </button>
               <p className=" mt-1 text-sm text-gray-500">
-                don't have an account?{" "}
-                <Link to={"/signup"} className="underline">
+                already have an account?{" "}
+                <Link to={"/login"} className="underline">
                   {" "}
-                  signup{" "}
+                  login{" "}
                 </Link>
               </p>
             </div>

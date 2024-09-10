@@ -40,3 +40,18 @@ interface userType{
     })
     return res
 }
+
+
+
+export const getUser = async (userPayload : userType) => {
+    const res = await prisma.user.findUnique({
+        where: {
+          email: userPayload.email,
+          password: userPayload.password,
+        },
+        select: {
+          userId: true,
+        },
+      });
+      return res
+}

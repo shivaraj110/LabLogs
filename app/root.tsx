@@ -43,7 +43,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   Contact
                 </button>
               </Link>
-              <Link to={"/"}>
+              <Link to={"/login"}>
                 <button className="lg:pl-80 pl-12 font-semibold  navbtn  text-gray-500 text-md">
                   Login
                 </button>
