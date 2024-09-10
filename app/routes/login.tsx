@@ -1,13 +1,17 @@
 import { ActionFunction, ActionFunctionArgs, redirect } from "@remix-run/node";
 import { Form, Link, useNavigation } from "@remix-run/react";
-import { prisma } from "./subjects.$userId";
 import { getUser } from "~/db";
 export const action: ActionFunction = async ({
   request,
 }: ActionFunctionArgs) => {
   const formData = await request.formData();
-  const email = JSON.stringify(formData.get("email"));
-  const password = JSON.stringify(formData.get("password"));
+
+  let email = JSON.stringify(formData.get("email"));
+  email = email.replace(/^"(.*)"$/, "$1");
+
+  let password = JSON.stringify(formData.get("password"));
+  password = password.replace(/^"(.*)"$/, "$1");
+
   const res = await getUser({ email, password });
   return redirect(`/subjects/${res?.userId}`);
 };
@@ -41,13 +45,13 @@ export default function Login() {
               <input
                 name="email"
                 type="text"
-                className=" rounded-md p-1 border mt-3 text-center bg-teal-100"
+                className=" rounded-md p-2 border mt-3 text-center bg-teal-100"
                 placeholder="email"
               />
               <input
                 name="password"
                 type="text"
-                className=" rounded-md p-1 border mt-3 text-center bg-teal-100"
+                className=" rounded-md p-2 border mt-3 text-center bg-teal-100"
                 placeholder="password"
               />
               <button

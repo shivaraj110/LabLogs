@@ -55,3 +55,33 @@ export const getUser = async (userPayload : userType) => {
       });
       return res
 }
+
+
+export const addSubject = async (
+    name: string,
+    desc: string,
+    userId: number
+  ) => {
+    const res = await prisma.user.update({
+      where: {
+        userId: userId,
+      },
+      data: {
+        subjects: {
+          create: {
+            subjectName: name,
+            subDescription: desc,
+          },
+        },
+      },
+      select: {
+        subjects: {
+          select: {
+            subjectName: true,
+          },
+        },
+        userId : true
+      },
+    });
+    return res;
+  };
