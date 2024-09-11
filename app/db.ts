@@ -110,3 +110,32 @@ export const addSubject = async (
       alert("somthing went wrong !")
     }
   };
+
+
+
+  export const deleteAssignment = async ( assignmentId : number ) => {
+    try{
+      prisma.assignment.delete({
+        where : {
+          assignmentId : assignmentId
+        }
+      })
+    }
+    catch {
+      alert("somthing went wrong!")
+    }
+  }
+
+
+  export const deleteSubject = async (subjectId : number) => {
+    try{
+      prisma.subject.delete({
+        where : {
+          subjectId : subjectId
+        }
+      })
+    }
+    catch{
+    alert("someting went wrong !")
+    }
+  }
