@@ -4,18 +4,22 @@ import { ActionFunction, ActionFunctionArgs } from "@remix-run/node";
 export const action: ActionFunction = async ({
   request,
 }: ActionFunctionArgs) => {
-  const formData = await request.formData();
-  const fname = JSON.stringify(formData.get("fname"));
-  const lname = JSON.stringify(formData.get("lname"));
-  const email = JSON.stringify(formData.get("email"));
-  const password = JSON.stringify(formData.get("password"));
-  const res = insertUser({
-    fname,
-    lname,
-    email,
-    password,
-  });
-  return redirect(`/subjects/${(await res).userId}`);
+  try {
+    const formData = await request.formData();
+    const fname = JSON.stringify(formData.get("fname"));
+    const lname = JSON.stringify(formData.get("lname"));
+    const email = JSON.stringify(formData.get("email"));
+    const password = JSON.stringify(formData.get("password"));
+    const res = insertUser({
+      fname,
+      lname,
+      email,
+      password,
+    });
+    return redirect(`/subjects/${(await res)?.userId}`);
+  } catch {
+    alert("something went wrong !");
+  }
 };
 export default function Signup() {
   const navigation = useNavigation();

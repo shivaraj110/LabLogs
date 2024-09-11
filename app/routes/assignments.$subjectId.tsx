@@ -2,24 +2,24 @@ import { LoaderFunctionArgs } from "@remix-run/node";
 import { prisma } from "./subjects.$userId";
 import { Link, useLoaderData, useParams } from "@remix-run/react";
 import Card from "~/components/Card";
-type codeInput = {
-  code: string;
-  title: string;
-};
 export const loader = async ({ params }: LoaderFunctionArgs) => {
-  const id = Number(params.subjectId);
-  const res = await prisma.assignment.findMany({
-    where: {
-      subjectId: id,
-    },
-    select: {
-      title: true,
-      description: true,
-      codeSnippet: true,
-      assignmentId: true,
-    },
-  });
-  return res;
+  try {
+    const id = Number(params.subjectId);
+    const res = await prisma.assignment.findMany({
+      where: {
+        subjectId: id,
+      },
+      select: {
+        title: true,
+        description: true,
+        codeSnippet: true,
+        assignmentId: true,
+      },
+    });
+    return res;
+  } catch {
+    alert("something went wrong !");
+  }
 };
 
 export default function Assignment() {

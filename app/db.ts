@@ -1,7 +1,4 @@
-import { Assignment, User } from "@prisma/client";
 import { prisma } from "./routes/subjects.$userId";
-import { truncate } from "fs";
-import test from "node:test";
 type assignmentPayload = {
     title : string,
     description : string,
@@ -9,19 +6,25 @@ type assignmentPayload = {
     subjectId : number
 }
 export const addAssignment = async (payload : assignmentPayload) => {
+  try{
     const res = prisma.assignment.create({
-        data : {
-            title : payload.title,
-            codeSnippet : payload.codeSnippet,
-            description : payload.description,
-            subjectId : payload.subjectId
-        },
-        select : {
-            title : true,
-            subjectId :true
-        }
-    })
-    return res
+      data : {
+          title : payload.title,
+          codeSnippet : payload.codeSnippet,
+          description : payload.description,
+          subjectId : payload.subjectId
+      },
+      select : {
+          title : true,
+          subjectId :true
+      }
+  })
+  return res
+  }
+  catch{
+    alert("somthing went wrong!")
+  }
+    
 }
 
 interface userType{
@@ -31,34 +34,46 @@ interface userType{
     password : string,
 }
     export const insertUser = async ( userPayload : userType ) => {
-    const res = await prisma.user.create({
-        data : {
-            fname : userPayload.fname,
-            lname : userPayload.lname,
-            email : userPayload.email,
-            password : userPayload.password,
-        },
-        select :{
-            userId : true,
-            
-        }
-    })
-    return res
+      try{
+        const res = await prisma.user.create({
+          data : {
+              fname : userPayload.fname,
+              lname : userPayload.lname,
+              email : userPayload.email,
+              password : userPayload.password,
+          },
+          select :{
+              userId : true,
+              
+          }
+      })
+      return res
+      }
+      catch{
+        alert("something went wrong !")
+      }
+
 }
 
 
 
 export const getUser = async (userPayload : userType) => {
+  try{
     const res = await prisma.user.findUnique({
-        where: {
-          email: userPayload.email,
-          password: userPayload.password,
-        },
-        select: {
-          userId: true,
-        },
-      });
-      return res
+      where: {
+        email: userPayload.email,
+        password: userPayload.password,
+      },
+      select: {
+        userId: true,
+      },
+    });
+    return res
+  }
+  catch{
+alert("something went wrong !")
+  }
+    
 }
 
 
@@ -67,26 +82,31 @@ export const addSubject = async (
     desc: string,
     userId: number
   ) => {
-    const res = await prisma.user.update({
-      where: {
-        userId: userId,
-      },
-      data: {
-        subjects: {
-          create: {
-            subjectName: name,
-            subDescription: desc,
+    try{
+      const res = await prisma.user.update({
+        where: {
+          userId: userId,
+        },
+        data: {
+          subjects: {
+            create: {
+              subjectName: name,
+              subDescription: desc,
+            },
           },
         },
-      },
-      select: {
-        subjects: {
-          select: {
-            subjectName: true,
+        select: {
+          subjects: {
+            select: {
+              subjectName: true,
+            },
           },
+          userId : true
         },
-        userId : true
-      },
-    });
-    return res;
+      });
+      return res;
+    }
+    catch{
+      alert("somthing went wrong !")
+    }
   };

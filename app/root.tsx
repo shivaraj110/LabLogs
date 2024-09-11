@@ -8,7 +8,6 @@ import {
 } from "@remix-run/react";
 import "./tailwind.css";
 import { useState } from "react";
-import exp from "constants";
 export function Layout({ children }: { children: React.ReactNode }) {
   const [isLoggedin, setIsLoggedIn] = useState(false);
   return (

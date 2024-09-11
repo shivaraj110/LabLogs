@@ -4,16 +4,20 @@ import { getUser } from "~/db";
 export const action: ActionFunction = async ({
   request,
 }: ActionFunctionArgs) => {
-  const formData = await request.formData();
+  try {
+    const formData = await request.formData();
 
-  let email = JSON.stringify(formData.get("email"));
-  email = email.replace(/^"(.*)"$/, "$1");
+    let email = JSON.stringify(formData.get("email"));
+    email = email.replace(/^"(.*)"$/, "$1");
 
-  let password = JSON.stringify(formData.get("password"));
-  password = password.replace(/^"(.*)"$/, "$1");
+    let password = JSON.stringify(formData.get("password"));
+    password = password.replace(/^"(.*)"$/, "$1");
 
-  const res = await getUser({ email, password });
-  return redirect(`/subjects/${res?.userId}`);
+    const res = await getUser({ email, password });
+    return redirect(`/subjects/${res?.userId}`);
+  } catch {
+    alert("somehting went wrong!");
+  }
 };
 
 export default function Login() {

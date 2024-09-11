@@ -5,22 +5,26 @@ import { json, Link, useLoaderData, useParams } from "@remix-run/react";
 export const prisma = new PrismaClient();
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
-  const id = Number(params.userId);
-  const res = await prisma.user.findMany({
-    where: {
-      userId: id,
-    },
-    select: {
-      subjects: {
-        select: {
-          subjectId: true,
-          subjectName: true,
-          subDescription: true,
+  try {
+    const id = Number(params.userId);
+    const res = await prisma.user.findMany({
+      where: {
+        userId: id,
+      },
+      select: {
+        subjects: {
+          select: {
+            subjectId: true,
+            subjectName: true,
+            subDescription: true,
+          },
         },
       },
-    },
-  });
-  return json({ subjects: res });
+    });
+    return json({ subjects: res });
+  } catch {
+    alert("something went wrong");
+  }
 };
 
 export default function Subjects() {
