@@ -1,4 +1,4 @@
-import { PrismaClient, Subject } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { json, Link, useLoaderData, useParams } from "@remix-run/react";
 
