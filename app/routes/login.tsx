@@ -1,6 +1,7 @@
 import { ActionFunction, ActionFunctionArgs, redirect } from "@remix-run/node";
 import { Form, Link, useNavigation } from "@remix-run/react";
-import { getUser } from "~/db";
+import { getUser } from "../db";
+import React from "react";
 export const action: ActionFunction = async ({
   request,
 }: ActionFunctionArgs) => {

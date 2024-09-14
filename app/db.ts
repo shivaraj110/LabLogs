@@ -53,11 +53,8 @@ interface userType{
       catch{
         alert("something went wrong !")
       }
-
-}
-
-
-
+    }
+    
 export const getUser = async (userPayload : userType) => {
   try{
     const res = await prisma.user.findUnique({

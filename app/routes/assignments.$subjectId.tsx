@@ -1,7 +1,8 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { prisma } from "./subjects.$userId";
 import { Link, useLoaderData, useParams } from "@remix-run/react";
-import Card from "~/components/Card";
+import Card from "../components/Card";
+import React from "react";
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   try {
     const id = Number(params.subjectId);
