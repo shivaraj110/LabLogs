@@ -19,7 +19,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
           },
         },
       },
-    }); 
+    });
     return json({ subjects: res });
   } catch {
     alert("something went wrong");

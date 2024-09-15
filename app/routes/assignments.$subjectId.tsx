@@ -39,7 +39,7 @@ export default function Assignment() {
           <Link
             to={`/addAssignment/${subjectId}`}
             className="group cursor-pointer outline-none  hover:rotate-90 duration-300"
-            title="Add New Subject">
+            title="Add New Assignment">
             <svg
               className="stroke-teal-500 fill-none group-hover:fill-teal-800 group-active:stroke-teal-200 group-active:fill-teal-600 group-active:duration-0 duration-300"
               viewBox="0 0 24 24"

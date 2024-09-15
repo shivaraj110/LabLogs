@@ -8,13 +8,11 @@ export const action: ActionFunction = async ({
   try {
     const formData = await request.formData();
 
-    let email = JSON.stringify(formData.get("email"));
-    email = email.replace(/^"(.*)"$/, "$1");
-
-    let password = JSON.stringify(formData.get("password"));
-    password = password.replace(/^"(.*)"$/, "$1");
+    const email = JSON.stringify(formData.get("email"));
+    const password = JSON.stringify(formData.get("password"));
 
     const res = await getUser({ email, password });
+
     return redirect(`/subjects/${res?.userId}`);
   } catch {
     alert("somehting went wrong!");

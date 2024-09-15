@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import "./tailwind.css";
-import { useState } from "react";
+import React, { useState } from "react";
 export function Layout({ children }: { children: React.ReactNode }) {
   const [isLoggedin, setIsLoggedIn] = useState(false);
   return (
@@ -48,7 +48,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </button>
               </Link>
               <Link to={"/signup"} className="pl-6">
-                <button className=" font-semibold rounded-2xl w-10 signupBtn p-1 text-gray-500 text-md">
+                <button className=" font-semibold rounded-2xl w-10 signupBtn p-2 text-gray-500 text-md">
                   Signup
                 </button>
               </Link>
