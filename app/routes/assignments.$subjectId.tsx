@@ -1,23 +1,20 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { prisma } from "./subjects.$userId";
 import { Link, useLoaderData, useParams } from "@remix-run/react";
 import Card from "../components/Card";
 import React from "react";
+import axios from "axios";
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   try {
-    const id = Number(params.subjectId);
-    const res = await prisma.assignment.findMany({
-      where: {
-        subjectId: id,
-      },
-      select: {
-        title: true,
-        description: true,
-        codeSnippet: true,
-        assignmentId: true,
-      },
-    });
-    return res;
+    const subjectId = Number(params.subjectId);
+    const res = await axios.get(
+      "https://lablogs-backendapi.vercel.app/api/v1/assignments",
+      {
+        data: {
+          subjectId,
+        },
+      }
+    );
+    return res.data.response;
   } catch {
     alert("something went wrong !");
   }
@@ -57,7 +54,7 @@ export default function Assignment() {
         </div>
       </div>
 
-      {res.map((a) => (
+      {res.map((a: any) => (
         <div key={a.assignmentId} className="pt-6">
           <div className="text-xl font-bold font-mono text-gray-600 text-center pt-12">
             {++count}. Assignment Title - {a.title}

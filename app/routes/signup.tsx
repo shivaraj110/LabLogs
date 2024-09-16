@@ -1,7 +1,7 @@
 import { Form, Link, redirect, useNavigation } from "@remix-run/react";
-import { insertUser } from "../db";
 import { ActionFunction, ActionFunctionArgs } from "@remix-run/node";
 import React from "react";
+import axios from "axios";
 export const action: ActionFunction = async ({
   request,
 }: ActionFunctionArgs) => {
@@ -12,13 +12,16 @@ export const action: ActionFunction = async ({
     const lname = String(formData.get("lname"));
     const email = String(formData.get("email"));
     const password = String(formData.get("password"));
-    const res = await insertUser({
-      fname,
-      lname,
-      email,
-      password,
-    });
-    userId = res?.userId;
+    const res = await axios.post(
+      "https://lablogs-backendapi.vercel.app/api/v1/user",
+      {
+        fname,
+        lname,
+        email,
+        password,
+      }
+    );
+    userId = res.data.userId;
   } catch (err) {
     console.log("error" + err);
   }

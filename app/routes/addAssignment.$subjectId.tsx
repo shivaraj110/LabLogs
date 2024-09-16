@@ -1,7 +1,7 @@
 import { Form, redirect, useNavigation } from "@remix-run/react";
-import { addAssignment } from "../db";
 import { ActionFunction, ActionFunctionArgs } from "@remix-run/node";
 import React from "react";
+import axios from "axios";
 export const action: ActionFunction = async ({
   request,
   params,
@@ -9,20 +9,20 @@ export const action: ActionFunction = async ({
   try {
     const formData = await request.formData();
     const subjectId = Number(params.subjectId);
-    let title = JSON.stringify(formData.get("title"));
-    title = title.replace(/^"(.*)"$/, "$1");
-    let description = JSON.stringify(formData.get("description"));
-    description = description.replace(/^"(.*)"$/, "$1");
-    let codeSnippet = JSON.stringify(formData.get("code"));
-    codeSnippet = codeSnippet.replace(/^"(.*)"$/, "$1");
+    let title = String(formData.get("title"));
+    let description = String(formData.get("description"));
+    let codeSnippet = String(formData.get("code"));
 
-    const res = await addAssignment({
-      title,
-      description,
-      codeSnippet,
-      subjectId,
-    });
-    return redirect(`/assignments/${res?.subjectId}`);
+    const res = await axios.post(
+      "https://lablogs-backendapi.vercel.app/api/v1/assignment",
+      {
+        title,
+        description,
+        codeSnippet,
+        subjectId,
+      }
+    );
+    return redirect(`/assignments/${res.data.response.subjectId}`);
   } catch {
     alert("something went wrong!");
   }

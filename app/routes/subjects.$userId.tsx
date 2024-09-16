@@ -1,25 +1,18 @@
-import { PrismaClient } from "@prisma/client";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { json, Link, useLoaderData, useParams } from "@remix-run/react";
-export const prisma = new PrismaClient();
+import axios from "axios";
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   try {
     const id = Number(params.userId);
-    const res = await prisma.user.findMany({
-      where: {
-        userId: id,
-      },
-      select: {
-        subjects: {
-          select: {
-            subjectId: true,
-            subjectName: true,
-            subDescription: true,
-          },
+    const res = await axios.get(
+      "https://lablogs-backendapi.vercel.app/api/v1/subjects",
+      {
+        data: {
+          userId: id,
         },
-      },
-    });
-    return json({ subjects: res });
+      }
+    );
+    return json({ subjects: res.data.response });
   } catch (err) {
     console.log("loader error : " + err);
   }
@@ -56,15 +49,19 @@ export default function Subjects() {
         </div>
       </div>
 
-      {subjects.map((s) =>
-        s.subjects.map((p) => (
+      {subjects.map((s: any) =>
+        s.subjects.map((p: any) => (
           <Link
             to={`/assignments/${p.subjectId}`}
             className="p-3 mt-12  rounded-md shadow-md bg-teal-100 hover:bg-teal-200 subCards  hover:translate-y-2">
-            <div className=" text-2xl font-semibold text-gray-600 text-center">
+            <div
+              className=" text-2xl font-semibold text-gray-600 text-center"
+              key={p.subjectId}>
               {p.subjectName}
             </div>
-            <div className="text-slate-600 text-md pl-3 py-4 ">
+            <div
+              className="text-slate-600 text-md pl-3 py-4 "
+              key={p.subjectId + 1}>
               {p.subDescription}
             </div>
           </Link>

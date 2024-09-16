@@ -1,7 +1,7 @@
 import { Form, redirect, useNavigation } from "@remix-run/react";
-import { addSubject } from "../db";
 import { ActionFunction, ActionFunctionArgs } from "@remix-run/node";
 import React from "react";
+import axios from "axios";
 export const action: ActionFunction = async ({
   request,
   params,
@@ -9,12 +9,17 @@ export const action: ActionFunction = async ({
   try {
     const formData = await request.formData();
     const userId = Number(params.userId);
-    let name = JSON.stringify(formData.get("name"));
-    name = name.replace(/^"(.*)"$/, "$1");
-    let description = JSON.stringify(formData.get("description"));
-    description = description.replace(/^"(.*)"$/, "$1");
-    const res = await addSubject(name, description, userId);
-    return redirect(`/subjects/${res?.userId}`);
+    let name = String(formData.get("name"));
+    let description = String(formData.get("description"));
+    const res = await axios.post(
+      "https://lablogs-backendapi.vercel.app/api/v1/subject",
+      {
+        name,
+        description,
+        userId,
+      }
+    );
+    return redirect(`/subjects/${res.data.userId}`);
   } catch {
     alert("something went wrong!");
   }
