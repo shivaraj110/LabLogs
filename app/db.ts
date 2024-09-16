@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client"
+import axios from "axios"
 const prisma  = new PrismaClient()
 type assignmentPayload = {
     title : string,
@@ -34,30 +35,30 @@ interface userType{
     email : string,
     password : string,
 }
-    export const insertUser = async ( userPayload : userType ) => {
-      try{
-        const res = await prisma.user.create({
-          data : {
-              fname : userPayload.fname,
-              lname : userPayload.lname,
-              email : userPayload.email,
-              password : userPayload.password,
-          },
-          select :{
-              userId : true,
-              
-          }
-      })
-      return res
+export const insertUser = async ( userPayload : userType ) => {
+  try{
+    const res = await prisma.user.create({
+      data : {
+          fname : userPayload.fname,
+          lname : userPayload.lname,
+          email : userPayload.email,
+          password : userPayload.password,
+      },
+      select :{
+          userId : true,
+          
       }
-      catch{
-        alert("something went wrong !")
-      }
-    }
+  })
+  return res
+  }
+  catch{
+    alert("something went wrong !")
+  }
+}
     
 export const getUser = async (userPayload : userType) => {
   try{
-    const res = await prisma.user.findUnique({
+    const res = await prisma.user.findFirst({
       where: {
         email: userPayload.email,
         password: userPayload.password,

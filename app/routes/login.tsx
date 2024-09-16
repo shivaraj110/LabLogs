@@ -5,18 +5,19 @@ import React from "react";
 export const action: ActionFunction = async ({
   request,
 }: ActionFunctionArgs) => {
+  let userId;
   try {
     const formData = await request.formData();
 
-    const email = JSON.stringify(formData.get("email"));
-    const password = JSON.stringify(formData.get("password"));
+    const email = String(formData.get("email"));
+    const password = String(formData.get("password"));
 
     const res = await getUser({ email, password });
-
-    return redirect(`/subjects/${res?.userId}`);
+    userId = res?.userId;
   } catch {
     alert("somehting went wrong!");
   }
+  return redirect(`/subjects/${userId}`);
 };
 
 export default function Login() {

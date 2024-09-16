@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { json, Link, useLoaderData, useParams } from "@remix-run/react";
-import React from "react";
 export const prisma = new PrismaClient();
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   try {
@@ -21,8 +20,8 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
       },
     });
     return json({ subjects: res });
-  } catch {
-    alert("something went wrong");
+  } catch (err) {
+    console.log("loader error : " + err);
   }
 };
 

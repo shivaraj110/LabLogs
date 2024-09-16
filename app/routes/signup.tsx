@@ -5,22 +5,24 @@ import React from "react";
 export const action: ActionFunction = async ({
   request,
 }: ActionFunctionArgs) => {
+  let userId;
   try {
     const formData = await request.formData();
-    const fname = JSON.stringify(formData.get("fname"));
-    const lname = JSON.stringify(formData.get("lname"));
-    const email = JSON.stringify(formData.get("email"));
-    const password = JSON.stringify(formData.get("password"));
-    const res = insertUser({
+    const fname = String(formData.get("fname"));
+    const lname = String(formData.get("lname"));
+    const email = String(formData.get("email"));
+    const password = String(formData.get("password"));
+    const res = await insertUser({
       fname,
       lname,
       email,
       password,
     });
-    return redirect(`/subjects/${(await res)?.userId}`);
-  } catch {
-    alert("something went wrong !");
+    userId = res?.userId;
+  } catch (err) {
+    console.log("error" + err);
   }
+  return redirect(`/subjects/${userId}`);
 };
 export default function Signup() {
   const navigation = useNavigation();
