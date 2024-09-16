@@ -1,5 +1,4 @@
-import { PrismaClient } from "@prisma/client"
-import axios from "axios"
+import { PrismaClient } from "@prisma/client/extension"
 const prisma  = new PrismaClient()
 type assignmentPayload = {
     title : string,
