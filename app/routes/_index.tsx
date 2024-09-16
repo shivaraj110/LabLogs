@@ -20,7 +20,7 @@ export default function Index() {
             Add and update your assignments collection and access them from
             anywhere.
           </div>
-          <Link to={`/subjects/${"demo"}`} className="pl-24">
+          <Link to={`/`} className="pl-24">
             <button className=" w-10 font-semibold rounded-2xl btn text-md">
               Get Started
             </button>
