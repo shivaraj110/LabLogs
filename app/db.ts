@@ -1,5 +1,4 @@
-import { PrismaClient } from "@prisma/client"
-const prisma  = new PrismaClient()
+import { prisma } from "./routes/subjects.$userId"
 type assignmentPayload = {
     title : string,
     description : string,
