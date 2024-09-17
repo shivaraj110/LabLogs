@@ -62,7 +62,7 @@ export default function Assignment() {
           <div className="text-gray-500 font-semibold  text-center pt-4 pb-8 pl-6">
             {a.description}
           </div>
-          <div className="pt-6 pb-16">
+          <div className="pt-6 pb-16 items-center">
             <Card code={a.codeSnippet} title={a.title} />
           </div>
         </div>

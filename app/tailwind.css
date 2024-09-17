@@ -90,6 +90,13 @@
   }
 }
 
+@media only screen and (max-width: 450px) {
+  /* For mobile phones: */
+  [class*="card"] {
+    width: 380px;
+  }
+}
+
 #code:focus {
   outline: none !important;
 }

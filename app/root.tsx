@@ -20,35 +20,35 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="bg-teal-100">
         {!isLoggedin ? (
-          <header className="pb-6 pt-6 pl-8 lg:pl-36 fixed w-full shadow-md z-20 bg-teal-100">
-            <nav>
+          <header className="pb-6 pt-6 pl-8 lg:pl-36 md:pl-20 fixed w-full transiii shadow-md z-20 bg-teal-100">
+            <nav className="transiii">
               <Link to={"/"}>
                 <button className="font-extrabold pt-1  navbtn tracking-wider text-gray-600 text-3xl">
                   Lablogs
                 </button>
               </Link>
               <Link to={"/"}>
-                <button className="pl-12 font-semibold navbtn text-gray-500 text-md">
+                <button className="ml-12 font-semibold navbtn md:inline hidden   text-gray-500 text-md">
                   About
                 </button>
               </Link>
               <Link to={"/"}>
-                <button className="pl-12 font-semibold  navbtn text-gray-500 text-md">
+                <button className="ml-12 font-semibold  navbtn md:inline hidden   text-gray-500 text-md">
                   Features
                 </button>
               </Link>
               <Link to={"/"}>
-                <button className="pl-12 font-semibold  navbtn text-gray-500 text-md">
+                <button className="ml-12 font-semibold  navbtn md:inline hidden md:mr-0 1200:mr-32 transiii 1015:mr-0  text-gray-500 text-md">
                   Contact
                 </button>
               </Link>
               <Link to={"/login"}>
-                <button className="lg:pl-80 pl-12 font-semibold  navbtn  text-gray-500 text-md">
+                <button className="lg:pl-96  ml-12 font-semibold 1025:pl-52 1015:pl-40 navbtn md:inline hidden   transiii  text-gray-500 text-md">
                   Login
                 </button>
               </Link>
               <Link to={"/signup"} className="pl-6">
-                <button className=" font-semibold rounded-2xl w-10 signupBtn p-2 text-gray-500 text-md">
+                <button className=" font-semibold rounded-2xl w-10   signupBtn md:inline hidden   p-2 text-gray-500 text-md">
                   Signup
                 </button>
               </Link>
@@ -63,17 +63,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </button>
               </Link>
               <Link to={"/"}>
-                <button className="pl-12 font-semibold text-gray-500 text-md">
+                <button className="ml-12 font-semibold text-gray-500 text-md">
                   About
                 </button>
               </Link>
               <Link to={"/"}>
-                <button className="pl-12 font-semibold  text-gray-500 text-md">
+                <button className="ml-12 font-semibold  text-gray-500 text-md">
                   Features
                 </button>
               </Link>
               <Link to={"/"}>
-                <button className="pl-12 font-semibold  text-gray-500 text-md">
+                <button className="ml-12 font-semibold  text-gray-500 text-md">
                   Contact
                 </button>
               </Link>
