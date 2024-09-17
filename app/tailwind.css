@@ -12,6 +12,10 @@
   transition: 0.5s;
 }
 
+.transiii {
+  transition: 0.2s;
+}
+
 .card:hover {
   transform: translateY(-7px);
   box-shadow: 0px 10px 10px black;
@@ -67,8 +71,8 @@
 .code-container {
   text-align: center;
 }
-#code {
-  width: 550px;
+.code {
+  width: 90%;
   height: 450px;
   resize: none;
   background-color: rgb(73, 70, 92);
@@ -78,6 +82,14 @@
   padding: 10px;
   padding-left: 20px;
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="card"] {
+    width: 400px;
+  }
+}
+
 #code:focus {
   outline: none !important;
 }

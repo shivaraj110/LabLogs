@@ -1,4 +1,4 @@
- type codeInput = {
+type codeInput = {
   code: string;
   title: string;
 };
@@ -22,7 +22,7 @@ const Card = (codeInput: codeInput) => {
         </div>
       </div>
       <div className="code-container">
-        <textarea className="area" id="code" name="code" readOnly>
+        <textarea className="area code" id="code" name="code" readOnly>
           {codeInput.code}
         </textarea>
       </div>
