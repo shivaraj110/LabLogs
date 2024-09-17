@@ -20,7 +20,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="bg-teal-100">
         {!isLoggedin ? (
-          <header className="pb-6 pt-6 lg:pl-36 fixed w-full shadow-md z-20 bg-teal-100">
+          <header className="pb-6 pt-6 pl-8 lg:pl-36 fixed w-full shadow-md z-20 bg-teal-100">
             <nav>
               <Link to={"/"}>
                 <button className="font-extrabold pt-1  navbtn tracking-wider text-gray-600 text-3xl">

@@ -53,7 +53,7 @@ export default function Subjects() {
         s.subjects.map((p: any) => (
           <Link
             to={`/assignments/${p.subjectId}`}
-            className="p-3 mt-12  rounded-md shadow-md bg-teal-100 hover:bg-teal-200 subCards  hover:translate-y-2">
+            className="p-3 mt-12  rounded-md shadow-md col-span-3 md:col-span-1 bg-teal-100 hover:bg-teal-200 subCards  hover:translate-y-2">
             <div
               className=" text-2xl font-semibold text-gray-600 text-center"
               key={p.subjectId}>
