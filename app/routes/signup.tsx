@@ -47,7 +47,7 @@ export default function Signup() {
             </button>
           </Link>
         </div>
-        <div className="col-span-2 md:col-span-1 flex md:px-8 lg:pr-0  md:mt-0 md:mb-0 mb-10 justify-self-center sm:justify-end">
+        <div className="col-span-2 md:col-span-1 flex md:px-8 lg:pr-0  md:mt-0 md:mb-0 mb-10 mt-14 justify-self-center sm:justify-end">
           <Form method="post">
             <div className=" rounded-lg p-8 bg-teal-200 w-fit flex flex-col hover:bg-teal-300 subCards ">
               <div className="text-center text-gray-500 text-2xl font-bold">
