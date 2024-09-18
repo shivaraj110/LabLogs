@@ -58,42 +58,45 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
               <ul
                 className={` ${
-                  isMobile === true ? "flex absolute" : "hidden"
-                }  mobileMenu lg:hidden md:hidden h-screen -translate-y-6`}>
+                  isMobile === true
+                    ? "flex absolute bg-teal-100 rounded-lg  shadow-lg border-1 border-gray-700  transiii"
+                    : "hidden"
+                }  mobileMenu lg:hidden md:hidden h-screen w-screen text-center -translate-x-8 -translate-y-6`}>
                 <Link to={"/"}>
-                  <li className="ml-12 font-semibold navbtn lg:hidden md:hidden mt-4 text-gray-500 text-md">
+                  <li className="ml-12 font-semibold lg:hidden hover:underline text-2xl  md:hidden mt-4 text-gray-500 text-md">
                     About
                   </li>
                 </Link>
                 <Link to={"/"}>
-                  <li className="ml-12 font-semibold  navbtn lg:hidden md:hidden   text-gray-500 text-md">
+                  <li className="ml-12 font-semibold  lg:hidden md:hidden hover:underline mt-6 text-2xl text-gray-500 text-md">
                     Features
                   </li>
                 </Link>
                 <Link to={"/"}>
-                  <li className="ml-12 font-semibold  navbtn lg:hidden md:hidden md:mr-0 1200:mr-32 transiii 1015:mr-0  text-gray-500 text-md">
+                  <li className="ml-12 font-semibold hover:underline mt-6 text-2xl lg:hidden md:hidden md:mr-0 1200:mr-32 transiii 1015:mr-0  text-gray-500 text-md">
                     Contact
                   </li>
                 </Link>
                 <Link to={"/login"}>
-                  <li className="lg:pl-96  ml-12 font-semibold 10li52 1015:pl-40 navbtn lg:hidden md:hidden   transiii  text-gray-500 text-md">
+                  <li className="lg:pl-96  ml-12 font-semibold 10li52 1015:pl-40 lg:hidden md:hidden  mt-6 text-2xl hover:underline transiii  text-gray-500 text-md">
                     Login
                   </li>
                 </Link>
                 <Link to={"/signup"}>
-                  <li className="lg:pl-96  ml-12 font-semibold 10li52 1015:pl-40 navbtn lg:hidden md:hidden   transiii  text-gray-500 text-md">
+                  <li className="lg:pl-96  ml-12 font-semibold 10li52 1015:pl-40 lg:hidden md:hidden mt-6 text-2xl hover:underline  transiii  text-gray-500 text-md">
                     Signup
                   </li>
                 </Link>
               </ul>
-              <div
-                className="flex justify-end mobileMenu -translate-y-4 md:hidden"
-                onClick={() => {
-                  setIsMobile(!isMobile);
-                  console.log(isMobile);
-                }}>
+              <div className="flex justify-end mobileMenu -translate-y-4 md:hidden">
                 <label className="hamburger ">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    onClick={() => {
+                      setIsMobile(!isMobile);
+                      console.log(isMobile);
+                    }}
+                  />
                   <svg viewBox="0 0 32 32">
                     <path
                       className="line line-top-bottom"
