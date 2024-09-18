@@ -21,7 +21,7 @@ export default {
       // => @media (min-width: 1536px) { ... }
       '1015' : '1015px',
       '1025' : '1025px',
-      '1200' : '1200px'
+      '1200' : '1200px',
     }
   },
   plugins: [],
