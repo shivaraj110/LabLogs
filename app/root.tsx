@@ -61,29 +61,29 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   isMobile === true
                     ? "flex absolute bg-teal-100 rounded-lg  shadow-lg border-1 border-gray-700  transiii"
                     : "hidden"
-                }  mobileMenu lg:hidden md:hidden h-screen w-screen text-center -translate-x-8 -translate-y-6`}>
+                }  mobileMenu lg:hidden md:hidden h-screen w-screen text-center transiii -translate-x-8 -translate-y-6`}>
                 <Link to={"/"}>
-                  <li className="ml-12 font-semibold lg:hidden hover:underline text-2xl  md:hidden mt-4 text-gray-500 text-md">
+                  <li className=" font-semibold lg:hidden hover:underline text-2xl  md:hidden mt-4 text-gray-500 text-md">
                     About
                   </li>
                 </Link>
                 <Link to={"/"}>
-                  <li className="ml-12 font-semibold  lg:hidden md:hidden hover:underline mt-6 text-2xl text-gray-500 text-md">
+                  <li className=" font-semibold  lg:hidden md:hidden hover:underline mt-6 text-2xl text-gray-500 text-md">
                     Features
                   </li>
                 </Link>
                 <Link to={"/"}>
-                  <li className="ml-12 font-semibold hover:underline mt-6 text-2xl lg:hidden md:hidden md:mr-0 1200:mr-32 transiii 1015:mr-0  text-gray-500 text-md">
+                  <li className=" font-semibold hover:underline mt-6 text-2xl lg:hidden md:hidden md:mr-0 1200:mr-32 transiii 1015:mr-0  text-gray-500 text-md">
                     Contact
                   </li>
                 </Link>
                 <Link to={"/login"}>
-                  <li className="lg:pl-96  ml-12 font-semibold 10li52 1015:pl-40 lg:hidden md:hidden  mt-6 text-2xl hover:underline transiii  text-gray-500 text-md">
+                  <li className="lg:pl-96   font-semibold 10li52 1015:pl-40 lg:hidden md:hidden  mt-6 text-2xl hover:underline transiii  text-gray-500 text-md">
                     Login
                   </li>
                 </Link>
                 <Link to={"/signup"}>
-                  <li className="lg:pl-96  ml-12 font-semibold 10li52 1015:pl-40 lg:hidden md:hidden mt-6 text-2xl hover:underline  transiii  text-gray-500 text-md">
+                  <li className="lg:pl-96   font-semibold 10li52 1015:pl-40 lg:hidden md:hidden mt-6 text-2xl hover:underline  transiii  text-gray-500 text-md">
                     Signup
                   </li>
                 </Link>
