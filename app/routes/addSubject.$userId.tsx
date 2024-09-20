@@ -19,7 +19,7 @@ export const action: ActionFunction = async ({
         userId,
       }
     );
-    return redirect(`/subjects/${res.data.userId}`);
+    return redirect(`/subjects/${userId}`);
   } catch {
     alert("something went wrong!");
   }
