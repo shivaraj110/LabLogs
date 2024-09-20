@@ -33,7 +33,7 @@ export default function Login() {
   const isSubmitting = !(nav.state === "idle");
   return (
     <div>
-      <div className="grid grid-cols-2 pt-48">
+      <div className="grid grid-cols-2 max-[800px]:pt-24 pt-48">
         <div className="col-span-2 md:col-span-1 lg:pl-28 md:pl-14 pl-1 md:pr-0 flex flex-col">
           <div className="text-5xl font-extrabold text-gray-600 ">
             Manage your programming lab assignments
