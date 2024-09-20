@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { Link, useLoaderData, useParams } from "@remix-run/react";
+import { Link, redirect, useLoaderData, useParams } from "@remix-run/react";
 import Card from "../components/Card";
 import React from "react";
 import axios from "axios";
@@ -69,6 +69,7 @@ export default function Assignment() {
             <div
               onClick={() => {
                 deleteAssignments(a.assignmentId);
+                redirect(`/assignments/${subjectId}`);
               }}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
