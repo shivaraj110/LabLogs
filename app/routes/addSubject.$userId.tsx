@@ -34,12 +34,30 @@ export default function AddSubject() {
           <Form method="post">
             <div className=" rounded-lg p-8 bg-teal-200 w-fit flex flex-col hover:bg-teal-300 subCards ">
               <div className="text-center text-gray-500 text-2xl font-bold">
-                Add new subject
+                Add a new subject
+              </div>
+              <div className="text-start ml-4 text-gray-500 text-sm max-w-52 mt-4 font-semibold">
+                Warning
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-4 inline">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"
+                  />
+                </svg>{" "}
+                : You cannot edit or delete the Subjects you had created.
+                <a className="underline cursor-pointer ml-2">learn more</a>
               </div>
               <input
                 name="name"
                 type="text"
-                className=" rounded-md p-1 border mt-10 text-center bg-teal-100"
+                className=" rounded-md p-1 border mt-4 text-center bg-teal-100"
                 placeholder="subject name"
               />
               <input

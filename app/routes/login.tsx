@@ -65,7 +65,7 @@ export default function Login() {
               />
               <input
                 name="password"
-                type="text"
+                type="password"
                 className=" rounded-md p-2 border mt-4 text-center bg-teal-100"
                 placeholder="password"
               />
