@@ -23,9 +23,18 @@ export const action: ActionFunction = async ({
     );
     userId = res.data.userId;
   } catch {
-    alert("somehting went wrong!");
+    console.log("somehting went wrong!");
   }
-  return redirect(`/subjects/${userId}`);
+  if (userId) {
+    await axios.put("https://lablogs-backendapi.vercel.app/api/v1/loginkey", {
+      key: "login",
+      value: true,
+    });
+    return redirect(`/subjects/${userId}`);
+  } else {
+    console.log(" invalid login details !");
+    return redirect(`/login`);
+  }
 };
 
 export default function Login() {

@@ -1,15 +1,31 @@
 import {
+  json,
   Link,
   Links,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 import "./tailwind.css";
 import React, { useState } from "react";
+import axios from "axios";
+export const loader = async () => {
+  const loggedIn = await axios.get(
+    "https://lablogs-backendapi.vercel.app/api/v1/loginkey",
+    {
+      data: {
+        key: "login",
+      },
+    }
+  );
+  return json({ isLoggedin: await loggedIn.data.value });
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
-  const [isLoggedin, setIsLoggedIn] = useState(false);
+  const { isLoggedin } = useLoaderData<typeof loader>();
   const [isMobile, setIsMobile] = useState(false);
   return (
     <html lang="en">
@@ -20,7 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="bg-teal-100">
-        {!isLoggedin ? (
+        {isLoggedin === false ? (
           <header className=" pl-8 lg:pl-36 md:pl-20 fixed w-full transiii shadow-md z-20 bg-teal-100">
             <nav className="transiii">
               <Link to={"/"}>
@@ -132,8 +148,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     Contact
                   </button>
                 </Link>
-                <Link to={"/signup"} className="pl-6">
-                  <button className=" font-semibold rounded-2xl w-10   signupBtn lg:ml-96  ml-12 1025:ml-52 1015:ml-40 md:inline flex   transiii  p-2 text-gray-500 text-md">
+                <Link to={"/login"} className="pl-6">
+                  <button
+                    onClick={async () => {
+                      await axios.put(
+                        "https://lablogs-backendapi.vercel.app/api/v1/loginkey",
+                        {
+                          key: "login",
+                          value: false,
+                        }
+                      );
+                      redirect("/login");
+                    }}
+                    className=" font-semibold rounded-2xl w-10   signupBtn lg:ml-96  ml-12 1025:ml-52 1015:ml-40 md:inline flex   transiii  p-2 text-gray-500 text-md">
                     Logout
                   </button>
                 </Link>
