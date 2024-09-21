@@ -125,30 +125,30 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </nav>
           </header>
         ) : (
-          <header className=" pt-6 pl-8 lg:pl-36 md:pl-20 fixed w-full transiii shadow-md z-20 bg-teal-100">
+          <header className=" pl-8 lg:pl-36 md:pl-20 fixed w-full transiii shadow-md z-20 bg-teal-100">
             <nav className="transiii">
               <Link to={"/"}>
-                <button className="font-extrabold pt-1 -translate-y-1 navbtn tracking-wider text-gray-600 text-3xl">
+                <button className="font-extrabold translate-y-3 pt-1 navbtn tracking-wider text-gray-600 text-3xl">
                   Lablogs
                 </button>
               </Link>
-              <div className="mobileMenu -translate-y-9">
+              <div className="mobileMenu -translate-y-6">
                 <Link to={"/"}>
-                  <button className="ml-48 font-semibold navbtn md:inline flex  text-gray-500 text-md">
+                  <button className="ml-48 font-semibold navbtn md:inline hidden  text-gray-500 text-md">
                     About
                   </button>
                 </Link>
                 <Link to={"/"}>
-                  <button className="ml-12 font-semibold  navbtn md:inline flex   text-gray-500 text-md">
+                  <button className="ml-12 font-semibold  navbtn md:inline hidden   text-gray-500 text-md">
                     Features
                   </button>
                 </Link>
                 <Link to={"/"}>
-                  <button className="ml-12 font-semibold  navbtn md:inline flex md:mr-0 1200:mr-32 transiii 1015:mr-0  text-gray-500 text-md">
+                  <button className="ml-12 font-semibold  navbtn md:inline hidden md:mr-0 1200:mr-32 transiii 1015:mr-0  text-gray-500 text-md">
                     Contact
                   </button>
                 </Link>
-                <Link to={"/login"} className="pl-6">
+                <Link to={"/signup"} className="pl-6">
                   <button
                     onClick={async () => {
                       await axios.put(
@@ -158,12 +158,57 @@ export function Layout({ children }: { children: React.ReactNode }) {
                           value: false,
                         }
                       );
-                      redirect("/login");
                     }}
-                    className=" font-semibold rounded-2xl w-10   signupBtn lg:ml-96  ml-12 1025:ml-52 1015:ml-40 md:inline flex   transiii  p-2 text-gray-500 text-md">
+                    className=" font-semibold rounded-2xl w-10   signupBtn md:inline hidden   p-2 text-gray-500 text-md">
                     Logout
                   </button>
                 </Link>
+              </div>
+
+              <ul
+                className={` ${
+                  isMobile === true
+                    ? "flex absolute bg-teal-100 rounded-lg  shadow-lg border-1 border-gray-700  transiii"
+                    : "hidden"
+                }  mobileMenu lg:hidden md:hidden h-screen w-screen text-center transiii -translate-x-8 -translate-y-6`}>
+                <Link to={"/"}>
+                  <li className=" font-semibold lg:hidden hover:underline text-2xl  md:hidden mt-4 text-gray-500 text-md">
+                    About
+                  </li>
+                </Link>
+                <Link to={"/"}>
+                  <li className=" font-semibold  lg:hidden md:hidden hover:underline mt-6 text-2xl text-gray-500 text-md">
+                    Features
+                  </li>
+                </Link>
+                <Link to={"/"}>
+                  <li className=" font-semibold hover:underline mt-6 text-2xl lg:hidden md:hidden md:mr-0 1200:mr-32 transiii 1015:mr-0  text-gray-500 text-md">
+                    Contact
+                  </li>
+                </Link>
+                <Link to={"/login"}>
+                  <li className="lg:pl-96   font-semibold 10li52 1015:pl-40 lg:hidden md:hidden mt-6 text-2xl hover:underline  transiii  text-gray-500 text-md">
+                    Logout
+                  </li>
+                </Link>
+              </ul>
+              <div className="flex justify-end mobileMenu -translate-y-4 md:hidden">
+                <label className="hamburger ">
+                  <input
+                    type="checkbox"
+                    onClick={() => {
+                      setIsMobile(!isMobile);
+                      console.log(isMobile);
+                    }}
+                  />
+                  <svg viewBox="0 0 32 32">
+                    <path
+                      className="line line-top-bottom"
+                      d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+                    />
+                    <path className="line" d="M7 16 27 16" />
+                  </svg>
+                </label>
               </div>
             </nav>
           </header>
