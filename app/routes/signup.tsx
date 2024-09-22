@@ -25,14 +25,23 @@ export const action: ActionFunction = async ({
   } catch (err) {
     console.log("error" + err);
   }
-  return redirect(`/subjects/${userId}`);
+  if (userId) {
+    await axios.put("https://lablogs-backendapi.vercel.app/api/v1/loginkey", {
+      key: "login",
+      value: true,
+    });
+    return redirect(`/subjects/${userId}`);
+  } else {
+    console.log(" invalid login details !");
+    return redirect(`/signup`);
+  }
 };
 export default function Signup() {
   const navigation = useNavigation();
   const isSubmitting = !(navigation.state === "idle");
   return (
     <div>
-      <div className="grid grid-cols-2  max-[800px]:pt-24   pt-48">
+      <div className="grid grid-cols-2  max-[800px]:pt-24 pt-48">
         <div className="col-span-2 md:col-span-1 lg:pl-28 md:pl-14 pl-1 md:pr-0 flex flex-col">
           <div className="text-5xl font-extrabold text-gray-600 ">
             Manage your programming lab assignments
