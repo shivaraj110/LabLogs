@@ -56,7 +56,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   </button>
                 </Link>
                 <Link to={"/"}>
-                  <button className="ml-12 font-semibold  navbtn md:inline hidden md:mr-0 1200:mr-32 transiii 1015:mr-0  text-gray-500 text-md">
+                  <button
+                    onClick={() => {
+                      setIsMobile(!isMobile);
+                    }}
+                    className="ml-12 font-semibold  navbtn md:inline hidden md:mr-0 1200:mr-32 transiii 1015:mr-0  text-gray-500 text-md">
                     Contact
                   </button>
                 </Link>
@@ -78,27 +82,47 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     ? "flex absolute bg-teal-100 rounded-lg  shadow-lg border-1 border-gray-700  transiii"
                     : "hidden"
                 }  mobileMenu lg:hidden md:hidden h-screen w-screen text-center transiii -translate-x-8 -translate-y-6`}>
-                <Link to={"/"}>
+                <Link
+                  to={"/"}
+                  onClick={() => {
+                    setIsMobile(!isMobile);
+                  }}>
                   <li className=" font-semibold lg:hidden hover:underline text-2xl  md:hidden mt-4 text-gray-500 text-md">
                     About
                   </li>
                 </Link>
-                <Link to={"/"}>
+                <Link
+                  to={"/"}
+                  onClick={() => {
+                    setIsMobile(!isMobile);
+                  }}>
                   <li className=" font-semibold  lg:hidden md:hidden hover:underline mt-6 text-2xl text-gray-500 text-md">
                     Features
                   </li>
                 </Link>
-                <Link to={"/"}>
+                <Link
+                  to={"/"}
+                  onClick={() => {
+                    setIsMobile(!isMobile);
+                  }}>
                   <li className=" font-semibold hover:underline mt-6 text-2xl lg:hidden md:hidden md:mr-0 1200:mr-32 transiii 1015:mr-0  text-gray-500 text-md">
                     Contact
                   </li>
                 </Link>
-                <Link to={"/login"}>
+                <Link
+                  to={"/login"}
+                  onClick={() => {
+                    setIsMobile(!isMobile);
+                  }}>
                   <li className="lg:pl-96   font-semibold 10li52 1015:pl-40 lg:hidden md:hidden  mt-6 text-2xl hover:underline transiii  text-gray-500 text-md">
                     Login
                   </li>
                 </Link>
-                <Link to={"/signup"}>
+                <Link
+                  to={"/signup"}
+                  onClick={() => {
+                    setIsMobile(!isMobile);
+                  }}>
                   <li className="lg:pl-96   font-semibold 10li52 1015:pl-40 lg:hidden md:hidden mt-6 text-2xl hover:underline  transiii  text-gray-500 text-md">
                     Signup
                   </li>
@@ -113,7 +137,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
                       console.log(isMobile);
                     }}
                   />
-                  <svg viewBox="0 0 32 32">
+                  <svg
+                    viewBox="0 0 32 32"
+                    className={` ${isMobile === false ? "" : "svg-reset"}`}>
                     <path
                       className="line line-top-bottom"
                       d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
@@ -171,12 +197,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     ? "flex absolute bg-teal-100 rounded-lg  shadow-lg border-1 border-gray-700  transiii"
                     : "hidden"
                 }  mobileMenu lg:hidden md:hidden h-screen w-screen text-center transiii -translate-x-8 -translate-y-6`}>
-                <Link to={"/"}>
+                <Link
+                  to={"/"}
+                  onClick={() => {
+                    setIsMobile(!isMobile);
+                  }}>
                   <li className=" font-semibold lg:hidden hover:underline text-2xl  md:hidden mt-4 text-gray-500 text-md">
                     About
                   </li>
                 </Link>
-                <Link to={"/"}>
+                <Link
+                  to={"/"}
+                  onClick={() => {
+                    setIsMobile(!isMobile);
+                  }}>
                   <li className=" font-semibold  lg:hidden md:hidden hover:underline mt-6 text-2xl text-gray-500 text-md">
                     Features
                   </li>
@@ -186,7 +220,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     Contact
                   </li>
                 </Link>
-                <Link to={"/login"}>
+                <Link
+                  to={"/login"}
+                  onClick={async () => {
+                    await axios.put(
+                      "https://lablogs-backendapi.vercel.app/api/v1/loginkey",
+                      {
+                        key: "login",
+                        value: false,
+                      }
+                    );
+                    setIsMobile(!isMobile);
+                  }}>
                   <li className="lg:pl-96   font-semibold 10li52 1015:pl-40 lg:hidden md:hidden mt-6 text-2xl hover:underline  transiii  text-gray-500 text-md">
                     Logout
                   </li>
@@ -201,7 +246,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
                       console.log(isMobile);
                     }}
                   />
-                  <svg viewBox="0 0 32 32">
+                  <svg
+                    viewBox="0 0 32 32"
+                    className={` ${isMobile ? "" : "svg-reset"}`}>
                     <path
                       className="line line-top-bottom"
                       d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"

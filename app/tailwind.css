@@ -103,8 +103,13 @@
     display: hidden;
     float: right;
     flex-direction: column;
+    transition: transform 0.3s ease-in-out;
     margin-top: 35px;
   }
+}
+
+.svg-reset {
+  animation: none; /* Reset any existing animations */
 }
 
 #code:focus {
