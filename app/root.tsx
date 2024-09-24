@@ -25,6 +25,9 @@ export const loader = async () => {
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const refreshPage = () => {
+    return <Link to={window.location.pathname} />;
+  };
   const { isLoggedin } = useLoaderData<typeof loader>();
   const [isMobile, setIsMobile] = useState(false);
   return (
@@ -112,6 +115,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <Link
                   to={"/login"}
                   onClick={() => {
+                    refreshPage();
                     setIsMobile(!isMobile);
                   }}>
                   <li className="lg:pl-96   font-semibold 10li52 1015:pl-40 lg:hidden md:hidden  mt-6 text-2xl hover:underline transiii  text-gray-500 text-md">
@@ -123,7 +127,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   onClick={() => {
                     setIsMobile(!isMobile);
                   }}>
-                  <li className="lg:pl-96   font-semibold 10li52 1015:pl-40 lg:hidden md:hidden mt-6 text-2xl hover:underline  transiii  text-gray-500 text-md">
+                  <li className="lg:pl-96 font-semibold 10li52 1015:pl-40 lg:hidden md:hidden mt-6 text-2xl hover:underline  transiii  text-gray-500 text-md">
                     Signup
                   </li>
                 </Link>
@@ -174,7 +178,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     Contact
                   </button>
                 </Link>
-                <Link to={"/signup"} className="pl-6">
+                <Link
+                  to={"/signup"}
+                  className="lg:pl-52 "
+                  onClick={() => {
+                    refreshPage();
+                  }}>
                   <button
                     onClick={async () => {
                       await axios.put(
@@ -185,7 +194,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                         }
                       );
                     }}
-                    className=" font-semibold rounded-2xl w-10   signupBtn md:inline hidden   p-2 text-gray-500 text-md">
+                    className=" font-semibold rounded-2xl w-10  signupBtn md:inline hidden   p-2 text-gray-500 text-md">
                     Logout
                   </button>
                 </Link>
@@ -201,6 +210,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   to={"/"}
                   onClick={() => {
                     setIsMobile(!isMobile);
+                    refreshPage();
                   }}>
                   <li className=" font-semibold lg:hidden hover:underline text-2xl  md:hidden mt-4 text-gray-500 text-md">
                     About
@@ -232,7 +242,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     );
                     setIsMobile(!isMobile);
                   }}>
-                  <li className="lg:pl-96   font-semibold 10li52 1015:pl-40 lg:hidden md:hidden mt-6 text-2xl hover:underline  transiii  text-gray-500 text-md">
+                  <li
+                    onClick={() => {
+                      refreshPage();
+                    }}
+                    className="lg:pl-96   font-semibold 10li52 1015:pl-40 lg:hidden md:hidden mt-6 text-2xl hover:underline  transiii  text-gray-500 text-md">
                     Logout
                   </li>
                 </Link>
